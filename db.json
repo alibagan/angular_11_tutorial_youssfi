@@ -2,10 +2,10 @@
   "products": [
     {
       "id": 1,
-      "name": "Computer",
-      "price": 7500,
+      "name": "Computer 3",
+      "price": "75009",
       "quantity": 600,
-      "selected": true,
+      "selected": false,
       "available": true
     },
     {
@@ -68,14 +68,6 @@
       "name": "Computer 2",
       "price": 10000,
       "quantity": 600,
-      "selected": true,
-      "available": true,
-      "id": 12
-    },
-    {
-      "name": "Computer 2",
-      "price": 10000,
-      "quantity": 600,
       "selected": false,
       "available": true,
       "id": 13
@@ -119,6 +111,30 @@
       "selected": false,
       "available": true,
       "id": 18
+    },
+    {
+      "name": "ali",
+      "price": 0,
+      "quantity": 0,
+      "selected": true,
+      "available": true,
+      "id": 19
+    },
+    {
+      "name": "bagan ali",
+      "price": "800",
+      "quantity": "700",
+      "selected": true,
+      "available": false,
+      "id": 20
+    },
+    {
+      "name": "h",
+      "price": 0,
+      "quantity": 0,
+      "selected": true,
+      "available": true,
+      "id": 21
     }
   ]
 }

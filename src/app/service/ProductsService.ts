@@ -42,6 +42,39 @@ export class ProductsService{
     return this.http.delete<void>(host + "/" + p.id);
   }
 
+  saveProduct(p: Product): Observable<Product>{
+    let host = environment.host;
+    return this.http.post<Product>(host, p);
+  }
+
+  getProduct(id: number): Observable<Product>{
+    let host = environment.host;
+    return this.http.get<Product>(host + "/" + id);
+  }
+
+  updateProduct(p: Product): Observable<Product>{
+    let host = environment.host;
+    return this.http.put<Product>(host + "/" + p.id, p);
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
 
 
