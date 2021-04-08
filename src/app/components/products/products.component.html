@@ -1,0 +1,66 @@
+<nav class="navbar navbar-expand-sm bg-light navbar-light">
+  <ul class="navbar navbar-nav">
+    <li (click)="onSelectAllProducts()" class="btn btn-sm btn-outline-info">All</li>
+    <li (click)="onSelctedProducts()" class="btn btn-sm btn-outline-info">Selected</li>
+    <li (click)="onAvailableProducts()" class="btn btn-sm btn-outline-info">Available</li>
+    <li (click)="onNewProduct()" class="btn btn-sm btn-outline-info">New Product</li>
+  </ul>
+  <ul class="navbar navbar-nav ml-auto">
+    <li>
+      <form #f="ngForm" (ngSubmit)="onSearchProducts(f.value)">
+        <div class="form-group">
+          <input name="keyword" ngModel type="text">
+          <button class="btn btn-sm ml-2 btn-outline-info">
+            <span class="fa fa-search"></span>
+          </button>
+        </div>
+      </form>
+    </li>
+  </ul>
+</nav>
+<ng-container *ngIf="products$ | async as result" [ngSwitch]="result.dataState">
+  <ng-container *ngSwitchCase="0">
+      Loading .....
+  </ng-container>
+  <ng-container *ngSwitchCase="2">
+      <div class="alert-danger">
+        {{result.errorMessage}}
+      </div>
+  </ng-container>
+  <ng-container *ngSwitchCase="1">
+    <table class="table">
+      <tr>
+        <th>ID</th>
+        <th>NAME</th>
+        <th>PRICE</th>
+        <th>QUANTITY</th>
+        <th>SELECTED</th>
+        <th>AVAILABLE</th>
+      </tr>
+      <tr *ngFor="let p of result.data">
+        <td>{{p.id}}</td>
+        <td>{{p.name}}</td>
+        <td>{{p.price}}</td>
+        <td>{{p.quantity}}</td>
+        <td>{{p.selected}}</td>
+        <td>{{p.available}}</td>
+        <td>
+          <button (click)="onChangeSelected(p)" [ngClass]="p.selected?'btn btn-success':'btn btn-danger'">
+            <span *ngIf="p.selected">select</span>
+            <span *ngIf="!p.selected">Unselect</span>
+          </button>
+        </td>
+        <td>
+          <button (click)="onDeleteProduct(p)" class="btn btn-sm btn-danger">delete</button>
+        </td>
+        <td>
+          <button (click)="onEdit(p)" class="btn btn-sm btn-info">Edit Product</button>
+        </td>
+      </tr>
+    </table>
+  </ng-container>
+
+</ng-container>
+<div class="container" *ngIf="products$">
+
+</div>
